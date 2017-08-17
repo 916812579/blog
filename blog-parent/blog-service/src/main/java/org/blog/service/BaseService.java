@@ -30,6 +30,6 @@ public interface BaseService<T> {
      * @param t
      * @return
      */
-    int updateById(T t);
+    int update(T t);
 
 }

@@ -30,7 +30,7 @@ public class BaseServiceImpl<T, M extends BaseMapper<T>> implements BaseService<
 	}
 
 	@Override
-	public int updateById(T t) {
+	public int update(T t) {
 		return mapper.updateByPrimaryKey(t);
 	}
 
