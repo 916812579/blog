@@ -11,12 +11,13 @@
 		<module>blog-web</module>
 		<module>blog-model</module>
 		<module>blog-common</module>
+		<module>blog-controller</module>
 	</modules>
 
 	<properties>
 		<spring.version>4.0.6.RELEASE</spring.version>
 		<mybatis.version>3.2.7</mybatis.version>
-		<mysql.version>5.1.29</mysql.version>
+		<mysql.version>5.1.41</mysql.version>
 		<java.version>1.7</java.version>
 		<lucene.version>5.3.1</lucene.version>
 	</properties>
@@ -319,15 +320,17 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			<!-- mybatis 逆向工程插件 -->
+			<!-- tomcat 插件 -->
 			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.2</version>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
 				<configuration>
-					<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
-					<verbose>true</verbose>
-					<overwrite>true</overwrite>
+					<port>9090</port>
+					<path>/blog</path>
+					<uriEncoding>UTF-8</uriEncoding>
+					<finalName>blog</finalName>
+					<server>tomcat7</server>
 				</configuration>
 			</plugin>
 		</plugins>

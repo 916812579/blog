@@ -1,19 +1,18 @@
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <!-- mybatis-generator:generate -->
-    <properties resource="classpath:jdbc.properties"/>
-	<context id="testTables" targetRuntime="MyBatis3">
+	<!-- mybatis-generator:generate -->
+	<properties resource="jdbc.properties" />
+	<context id="tables" targetRuntime="MyBatis3">
 		<commentGenerator>
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
 		<!--mysql数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="${jdbc.driverClassName}"
-			connectionURL="${jdbc.url}" userId="${jdbc.url}" 
-			password="${jdbc.url}">
+			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
 		</jdbcConnection>
 
 		<!--oracle配置 -->
@@ -27,7 +26,7 @@
 
 		<!-- targetProject:生成model类的位置，重要！！ -->
 		<javaModelGenerator targetPackage="org.blog.model"
-			targetProject="src/main/java">
+			targetProject="../blog-model/src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 			<!-- 从数据库返回的值被清理前后的空格 -->
@@ -35,14 +34,14 @@
 		</javaModelGenerator>
 
 		<!-- targetProject:mapper映射xml文件生成的位置，重要！！ -->
-		<sqlMapGenerator targetPackage="org.blog.model.dao.mapper"
-			targetProject=".\src">
+		<sqlMapGenerator targetPackage="org.blog.dao.mapper"
+			targetProject="../blog-dao/src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 
 		<!-- targetPackage：mapper接口生成的位置，重要！！ -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="org.blog.model.dao" targetProject="src/main/java">
+			targetPackage="org.blog.dao.mapper" targetProject="../blog-dao/src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 

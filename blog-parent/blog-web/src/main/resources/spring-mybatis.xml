@@ -14,7 +14,7 @@
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	<!-- enable component scanning -->
-	<context:component-scan base-package="org.blog.service" />
+	<context:component-scan base-package="org.blog.service,org.blog.controller" />
 
 	<!-- enable autowire -->
 	<context:annotation-config />

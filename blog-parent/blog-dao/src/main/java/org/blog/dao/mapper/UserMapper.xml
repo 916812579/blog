@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.blog.dao.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="org.blog.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="nicename" jdbcType="VARCHAR" property="nicename" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="islock" jdbcType="CHAR" property="islock" />
+    <result column="isreadonly" jdbcType="CHAR" property="isreadonly" />
+    <result column="iswrite" jdbcType="CHAR" property="iswrite" />
+    <result column="isadmin" jdbcType="CHAR" property="isadmin" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, nicename, name, password, email, islock, isreadonly, iswrite, isadmin
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.blog.model.User">
+    insert into user (id, nicename, name, 
+      password, email, islock, 
+      isreadonly, iswrite, isadmin
+      )
+    values (#{id,jdbcType=BIGINT}, #{nicename,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{islock,jdbcType=CHAR}, 
+      #{isreadonly,jdbcType=CHAR}, #{iswrite,jdbcType=CHAR}, #{isadmin,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.blog.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="nicename != null">
+        nicename,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="islock != null">
+        islock,
+      </if>
+      <if test="isreadonly != null">
+        isreadonly,
+      </if>
+      <if test="iswrite != null">
+        iswrite,
+      </if>
+      <if test="isadmin != null">
+        isadmin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="nicename != null">
+        #{nicename,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="islock != null">
+        #{islock,jdbcType=CHAR},
+      </if>
+      <if test="isreadonly != null">
+        #{isreadonly,jdbcType=CHAR},
+      </if>
+      <if test="iswrite != null">
+        #{iswrite,jdbcType=CHAR},
+      </if>
+      <if test="isadmin != null">
+        #{isadmin,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.blog.model.User">
+    update user
+    <set>
+      <if test="nicename != null">
+        nicename = #{nicename,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="islock != null">
+        islock = #{islock,jdbcType=CHAR},
+      </if>
+      <if test="isreadonly != null">
+        isreadonly = #{isreadonly,jdbcType=CHAR},
+      </if>
+      <if test="iswrite != null">
+        iswrite = #{iswrite,jdbcType=CHAR},
+      </if>
+      <if test="isadmin != null">
+        isadmin = #{isadmin,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.blog.model.User">
+    update user
+    set nicename = #{nicename,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      islock = #{islock,jdbcType=CHAR},
+      isreadonly = #{isreadonly,jdbcType=CHAR},
+      iswrite = #{iswrite,jdbcType=CHAR},
+      isadmin = #{isadmin,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="org.blog.model.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, age, department_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.blog.model.User">
+    insert into user (id, name, age, 
+      department_id)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{departmentId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.blog.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.blog.model.User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.blog.model.User">
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

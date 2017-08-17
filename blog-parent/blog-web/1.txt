@@ -1,0 +1,639 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building blog-web Maven Webapp 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-help-plugin:2.2:describe (default-cli) @ blog-web ---
+[INFO] org.apache.maven.plugins:maven-war-plugin:2.6
+
+Name: Apache Maven WAR Plugin
+Description: Builds a Web Application Archive (WAR) file from the project
+  output and its dependencies.
+Group Id: org.apache.maven.plugins
+Artifact Id: maven-war-plugin
+Version: 2.6
+Goal Prefix: war
+
+This plugin has 5 goals:
+
+war:exploded
+  Description: Create an exploded webapp in a specified directory.
+  Implementation: org.apache.maven.plugin.war.WarExplodedMojo
+  Language: java
+  Bound to phase: package
+
+  Available parameters:
+
+    archive
+      The archive configuration to use. See Maven Archiver Reference.
+
+    archiveClasses (Default: false)
+      User property: archiveClasses
+      Whether a JAR file will be created for the classes in the webapp. Using
+      this optional configuration parameter will make the compiled classes to
+      be archived into a JAR file and the classes directory will then be
+      excluded from the webapp.
+
+    cacheFile (Default: ${project.build.directory}/war/work/webapp-cache.xml)
+      Required: true
+      The file containing the webapp structure cache.
+
+    containerConfigXML
+      User property: maven.war.containerConfigXML
+      The path to a configuration file for the servlet container. Note that the
+      file name may be different for different servlet containers. Apache
+      Tomcat uses a configuration file named context.xml. The file will be
+      copied to the META-INF directory.
+
+    dependentWarExcludes
+      The comma separated list of tokens to exclude when doing a WAR overlay.
+      Deprecated. Use &lt;overlay&gt;/&lt;excludes&gt; instead
+
+    dependentWarIncludes
+      The comma separated list of tokens to include when doing a WAR overlay.
+      Default is '**'
+      Deprecated. Use &lt;overlay&gt;/&lt;includes&gt; instead
+
+    escapedBackslashesInFilePath (Default: false)
+      User property: maven.war.escapedBackslashesInFilePath
+      To escape interpolated values with Windows path c:\foo\bar will be
+      replaced with c:\\foo\\bar.
+
+    escapeString
+      User property: maven.war.escapeString
+      Expression preceded with this String won't be interpolated. \${foo} will
+      be replaced with ${foo}.
+
+    filteringDeploymentDescriptors (Default: false)
+      User property: maven.war.filteringDeploymentDescriptors
+      To filter deployment descriptors. Disabled by default.
+
+    filters
+      Filters (property files) to include during the interpolation of the
+      pom.xml.
+
+    includeEmptyDirectories (Default: false)
+      (no description available)
+
+    nonFilteredFileExtensions
+      A list of file extensions that should not be filtered. Will be used when
+      filtering webResources and overlays.
+
+    outputFileNameMapping
+      The file name mapping to use when copying libraries and TLDs. If no file
+      mapping is set (default) the files are copied with their standard names.
+
+    overlays
+      The overlays to apply. Each <overlay> element may contain:
+      - id (defaults to currentBuild)
+      - groupId (if this and artifactId are null, then the current project is
+        treated as its own overlay)
+      - artifactId (see above)
+      - classifier
+      - type
+      - includes (a list of string patterns)
+      - excludes (a list of string patterns)
+      - filtered (defaults to false)
+      - skip (defaults to false)
+      - targetPath (defaults to root of webapp structure)
+
+    recompressZippedFiles (Default: true)
+      Indicates if zip archives (jar,zip etc) being added to the war should be
+      compressed again. Compressing again can result in smaller archive size,
+      but gives noticeably longer execution time.
+
+    resourceEncoding (Default: ${project.build.sourceEncoding})
+      User property: resourceEncoding
+      The encoding to use when copying filtered web resources.
+
+    supportMultiLineFiltering (Default: false)
+      User property: maven.war.supportMultiLineFiltering
+      Stop searching endToken at the end of line
+
+    useCache (Default: false)
+      User property: useCache
+      Whether the cache should be used to save the status of the webapp across
+      multiple runs. Experimental feature so disabled by default.
+
+    useJvmChmod (Default: true)
+      User property: maven.war.useJvmChmod
+      use jvmChmod rather that cli chmod and forking process
+
+    warSourceDirectory (Default: ${basedir}/src/main/webapp)
+      Required: true
+      Single directory for extra files to include in the WAR. This is where you
+      place your JSP files.
+
+    warSourceExcludes
+      The comma separated list of tokens to exclude when copying the content of
+      the warSourceDirectory.
+
+    warSourceIncludes (Default: **)
+      The comma separated list of tokens to include when copying the content of
+      the warSourceDirectory.
+
+    webappDirectory (Default:
+    ${project.build.directory}/${project.build.finalName})
+      Required: true
+      The directory where the webapp is built.
+
+    webResources
+      The list of webResources we want to transfer.
+
+    webXml
+      User property: maven.war.webxml
+      The path to the web.xml file to use.
+
+    workDirectory (Default: ${project.build.directory}/war/work)
+      Required: true
+      Directory to unpack dependent WARs into if needed.
+
+war:help
+  Description: Display help information on maven-war-plugin.
+    Call mvn war:help -Ddetail=true -Dgoal=<goal-name> to display parameter
+    details.
+  Implementation: org.apache.maven.plugin.war.HelpMojo
+  Language: java
+
+  Available parameters:
+
+    detail (Default: false)
+      User property: detail
+      If true, display all settable properties for each goal.
+
+    goal
+      User property: goal
+      The name of the goal for which to show help. If unspecified, all goals
+      will be displayed.
+
+    indentSize (Default: 2)
+      User property: indentSize
+      The number of spaces per indentation level, should be positive.
+
+    lineLength (Default: 80)
+      User property: lineLength
+      The maximum length of a display line, should be positive.
+
+war:inplace
+  Description: Generate the webapp in the WAR source directory.
+  Implementation: org.apache.maven.plugin.war.WarInPlaceMojo
+  Language: java
+
+  Available parameters:
+
+    archive
+      The archive configuration to use. See Maven Archiver Reference.
+
+    archiveClasses (Default: false)
+      User property: archiveClasses
+      Whether a JAR file will be created for the classes in the webapp. Using
+      this optional configuration parameter will make the compiled classes to
+      be archived into a JAR file and the classes directory will then be
+      excluded from the webapp.
+
+    cacheFile (Default: ${project.build.directory}/war/work/webapp-cache.xml)
+      Required: true
+      The file containing the webapp structure cache.
+
+    containerConfigXML
+      User property: maven.war.containerConfigXML
+      The path to a configuration file for the servlet container. Note that the
+      file name may be different for different servlet containers. Apache
+      Tomcat uses a configuration file named context.xml. The file will be
+      copied to the META-INF directory.
+
+    dependentWarExcludes
+      The comma separated list of tokens to exclude when doing a WAR overlay.
+      Deprecated. Use &lt;overlay&gt;/&lt;excludes&gt; instead
+
+    dependentWarIncludes
+      The comma separated list of tokens to include when doing a WAR overlay.
+      Default is '**'
+      Deprecated. Use &lt;overlay&gt;/&lt;includes&gt; instead
+
+    escapedBackslashesInFilePath (Default: false)
+      User property: maven.war.escapedBackslashesInFilePath
+      To escape interpolated values with Windows path c:\foo\bar will be
+      replaced with c:\\foo\\bar.
+
+    escapeString
+      User property: maven.war.escapeString
+      Expression preceded with this String won't be interpolated. \${foo} will
+      be replaced with ${foo}.
+
+    filteringDeploymentDescriptors (Default: false)
+      User property: maven.war.filteringDeploymentDescriptors
+      To filter deployment descriptors. Disabled by default.
+
+    filters
+      Filters (property files) to include during the interpolation of the
+      pom.xml.
+
+    includeEmptyDirectories (Default: false)
+      (no description available)
+
+    nonFilteredFileExtensions
+      A list of file extensions that should not be filtered. Will be used when
+      filtering webResources and overlays.
+
+    outputFileNameMapping
+      The file name mapping to use when copying libraries and TLDs. If no file
+      mapping is set (default) the files are copied with their standard names.
+
+    overlays
+      The overlays to apply. Each <overlay> element may contain:
+      - id (defaults to currentBuild)
+      - groupId (if this and artifactId are null, then the current project is
+        treated as its own overlay)
+      - artifactId (see above)
+      - classifier
+      - type
+      - includes (a list of string patterns)
+      - excludes (a list of string patterns)
+      - filtered (defaults to false)
+      - skip (defaults to false)
+      - targetPath (defaults to root of webapp structure)
+
+    recompressZippedFiles (Default: true)
+      Indicates if zip archives (jar,zip etc) being added to the war should be
+      compressed again. Compressing again can result in smaller archive size,
+      but gives noticeably longer execution time.
+
+    resourceEncoding (Default: ${project.build.sourceEncoding})
+      User property: resourceEncoding
+      The encoding to use when copying filtered web resources.
+
+    supportMultiLineFiltering (Default: false)
+      User property: maven.war.supportMultiLineFiltering
+      Stop searching endToken at the end of line
+
+    useCache (Default: false)
+      User property: useCache
+      Whether the cache should be used to save the status of the webapp across
+      multiple runs. Experimental feature so disabled by default.
+
+    useJvmChmod (Default: true)
+      User property: maven.war.useJvmChmod
+      use jvmChmod rather that cli chmod and forking process
+
+    warSourceDirectory (Default: ${basedir}/src/main/webapp)
+      Required: true
+      Single directory for extra files to include in the WAR. This is where you
+      place your JSP files.
+
+    warSourceExcludes
+      The comma separated list of tokens to exclude when copying the content of
+      the warSourceDirectory.
+
+    warSourceIncludes (Default: **)
+      The comma separated list of tokens to include when copying the content of
+      the warSourceDirectory.
+
+    webappDirectory (Default:
+    ${project.build.directory}/${project.build.finalName})
+      Required: true
+      The directory where the webapp is built.
+
+    webResources
+      The list of webResources we want to transfer.
+
+    webXml
+      User property: maven.war.webxml
+      The path to the web.xml file to use.
+
+    workDirectory (Default: ${project.build.directory}/war/work)
+      Required: true
+      Directory to unpack dependent WARs into if needed.
+
+war:manifest
+  Description: Generate a manifest for this webapp. The manifest file is
+    created in the warSourceDirectory.
+  Implementation: org.apache.maven.plugin.war.WarManifestMojo
+  Language: java
+  Bound to phase: process-resources
+
+  Available parameters:
+
+    archive
+      The archive configuration to use. See Maven Archiver Reference.
+
+    archiveClasses (Default: false)
+      User property: archiveClasses
+      Whether a JAR file will be created for the classes in the webapp. Using
+      this optional configuration parameter will make the compiled classes to
+      be archived into a JAR file and the classes directory will then be
+      excluded from the webapp.
+
+    cacheFile (Default: ${project.build.directory}/war/work/webapp-cache.xml)
+      Required: true
+      The file containing the webapp structure cache.
+
+    containerConfigXML
+      User property: maven.war.containerConfigXML
+      The path to a configuration file for the servlet container. Note that the
+      file name may be different for different servlet containers. Apache
+      Tomcat uses a configuration file named context.xml. The file will be
+      copied to the META-INF directory.
+
+    dependentWarExcludes
+      The comma separated list of tokens to exclude when doing a WAR overlay.
+      Deprecated. Use &lt;overlay&gt;/&lt;excludes&gt; instead
+
+    dependentWarIncludes
+      The comma separated list of tokens to include when doing a WAR overlay.
+      Default is '**'
+      Deprecated. Use &lt;overlay&gt;/&lt;includes&gt; instead
+
+    escapedBackslashesInFilePath (Default: false)
+      User property: maven.war.escapedBackslashesInFilePath
+      To escape interpolated values with Windows path c:\foo\bar will be
+      replaced with c:\\foo\\bar.
+
+    escapeString
+      User property: maven.war.escapeString
+      Expression preceded with this String won't be interpolated. \${foo} will
+      be replaced with ${foo}.
+
+    filteringDeploymentDescriptors (Default: false)
+      User property: maven.war.filteringDeploymentDescriptors
+      To filter deployment descriptors. Disabled by default.
+
+    filters
+      Filters (property files) to include during the interpolation of the
+      pom.xml.
+
+    includeEmptyDirectories (Default: false)
+      (no description available)
+
+    nonFilteredFileExtensions
+      A list of file extensions that should not be filtered. Will be used when
+      filtering webResources and overlays.
+
+    outputFileNameMapping
+      The file name mapping to use when copying libraries and TLDs. If no file
+      mapping is set (default) the files are copied with their standard names.
+
+    overlays
+      The overlays to apply. Each <overlay> element may contain:
+      - id (defaults to currentBuild)
+      - groupId (if this and artifactId are null, then the current project is
+        treated as its own overlay)
+      - artifactId (see above)
+      - classifier
+      - type
+      - includes (a list of string patterns)
+      - excludes (a list of string patterns)
+      - filtered (defaults to false)
+      - skip (defaults to false)
+      - targetPath (defaults to root of webapp structure)
+
+    recompressZippedFiles (Default: true)
+      Indicates if zip archives (jar,zip etc) being added to the war should be
+      compressed again. Compressing again can result in smaller archive size,
+      but gives noticeably longer execution time.
+
+    resourceEncoding (Default: ${project.build.sourceEncoding})
+      User property: resourceEncoding
+      The encoding to use when copying filtered web resources.
+
+    supportMultiLineFiltering (Default: false)
+      User property: maven.war.supportMultiLineFiltering
+      Stop searching endToken at the end of line
+
+    useCache (Default: false)
+      User property: useCache
+      Whether the cache should be used to save the status of the webapp across
+      multiple runs. Experimental feature so disabled by default.
+
+    useJvmChmod (Default: true)
+      User property: maven.war.useJvmChmod
+      use jvmChmod rather that cli chmod and forking process
+
+    warSourceDirectory (Default: ${basedir}/src/main/webapp)
+      Required: true
+      Single directory for extra files to include in the WAR. This is where you
+      place your JSP files.
+
+    warSourceExcludes
+      The comma separated list of tokens to exclude when copying the content of
+      the warSourceDirectory.
+
+    warSourceIncludes (Default: **)
+      The comma separated list of tokens to include when copying the content of
+      the warSourceDirectory.
+
+    webappDirectory (Default:
+    ${project.build.directory}/${project.build.finalName})
+      Required: true
+      The directory where the webapp is built.
+
+    webResources
+      The list of webResources we want to transfer.
+
+    webXml
+      User property: maven.war.webxml
+      The path to the web.xml file to use.
+
+    workDirectory (Default: ${project.build.directory}/war/work)
+      Required: true
+      Directory to unpack dependent WARs into if needed.
+
+war:war
+  Description: Build a WAR file.
+  Implementation: org.apache.maven.plugin.war.WarMojo
+  Language: java
+  Bound to phase: package
+
+  Available parameters:
+
+    archive
+      The archive configuration to use. See Maven Archiver Reference.
+
+    archiveClasses (Default: false)
+      User property: archiveClasses
+      Whether a JAR file will be created for the classes in the webapp. Using
+      this optional configuration parameter will make the compiled classes to
+      be archived into a JAR file and the classes directory will then be
+      excluded from the webapp.
+
+    attachClasses (Default: false)
+      Whether classes (that is the content of the WEB-INF/classes directory)
+      should be attached to the project as an additional artifact.
+      By default the classifier for the additional artifact is 'classes'. You
+      can change it with the someclassifier]]> parameter.
+      
+      If this parameter true, another project can depend on the classes by
+      writing something like:
+      
+      
+        myGroup
+        myArtifact
+        myVersion
+        classes]]>
+
+    cacheFile (Default: ${project.build.directory}/war/work/webapp-cache.xml)
+      Required: true
+      The file containing the webapp structure cache.
+
+    classesClassifier (Default: classes)
+      The classifier to use for the attached classes artifact.
+
+    classifier
+      Classifier to add to the generated WAR. If given, the artifact will be an
+      attachment instead. The classifier will not be applied to the JAR file of
+      the project - only to the WAR file.
+
+    containerConfigXML
+      User property: maven.war.containerConfigXML
+      The path to a configuration file for the servlet container. Note that the
+      file name may be different for different servlet containers. Apache
+      Tomcat uses a configuration file named context.xml. The file will be
+      copied to the META-INF directory.
+
+    dependentWarExcludes
+      The comma separated list of tokens to exclude when doing a WAR overlay.
+      Deprecated. Use &lt;overlay&gt;/&lt;excludes&gt; instead
+
+    dependentWarIncludes
+      The comma separated list of tokens to include when doing a WAR overlay.
+      Default is '**'
+      Deprecated. Use &lt;overlay&gt;/&lt;includes&gt; instead
+
+    escapedBackslashesInFilePath (Default: false)
+      User property: maven.war.escapedBackslashesInFilePath
+      To escape interpolated values with Windows path c:\foo\bar will be
+      replaced with c:\\foo\\bar.
+
+    escapeString
+      User property: maven.war.escapeString
+      Expression preceded with this String won't be interpolated. \${foo} will
+      be replaced with ${foo}.
+
+    failOnMissingWebXml (Default: true)
+      User property: failOnMissingWebXml
+      Whether or not to fail the build if the web.xml file is missing. Set to
+      false if you want you WAR built without a web.xml file. This may be
+      useful if you are building an overlay that has no web.xml file.
+
+    filteringDeploymentDescriptors (Default: false)
+      User property: maven.war.filteringDeploymentDescriptors
+      To filter deployment descriptors. Disabled by default.
+
+    filters
+      Filters (property files) to include during the interpolation of the
+      pom.xml.
+
+    includeEmptyDirectories (Default: false)
+      (no description available)
+
+    nonFilteredFileExtensions
+      A list of file extensions that should not be filtered. Will be used when
+      filtering webResources and overlays.
+
+    outputDirectory (Default: ${project.build.directory})
+      Required: true
+      The directory for the generated WAR.
+
+    outputFileNameMapping
+      The file name mapping to use when copying libraries and TLDs. If no file
+      mapping is set (default) the files are copied with their standard names.
+
+    overlays
+      The overlays to apply. Each <overlay> element may contain:
+      - id (defaults to currentBuild)
+      - groupId (if this and artifactId are null, then the current project is
+        treated as its own overlay)
+      - artifactId (see above)
+      - classifier
+      - type
+      - includes (a list of string patterns)
+      - excludes (a list of string patterns)
+      - filtered (defaults to false)
+      - skip (defaults to false)
+      - targetPath (defaults to root of webapp structure)
+
+    packagingExcludes
+      The comma separated list of tokens to exclude from the WAR before
+      packaging. This option may be used to implement the skinny WAR use case.
+      Note that you can use the Java Regular Expressions engine to include and
+      exclude specific pattern using the expression %regex[]. Hint: read the
+      about (?!Pattern).
+
+    packagingIncludes
+      The comma separated list of tokens to include in the WAR before
+      packaging. By default everything is included. This option may be used to
+      implement the skinny WAR use case. Note that you can use the Java Regular
+      Expressions engine to include and exclude specific pattern using the
+      expression %regex[].
+
+    primaryArtifact (Default: true)
+      User property: primaryArtifact
+      Whether this is the main artifact being built. Set to false if you don't
+      want to install or deploy it to the local repository instead of the
+      default one in an execution.
+
+    recompressZippedFiles (Default: true)
+      Indicates if zip archives (jar,zip etc) being added to the war should be
+      compressed again. Compressing again can result in smaller archive size,
+      but gives noticeably longer execution time.
+
+    resourceEncoding (Default: ${project.build.sourceEncoding})
+      User property: resourceEncoding
+      The encoding to use when copying filtered web resources.
+
+    supportMultiLineFiltering (Default: false)
+      User property: maven.war.supportMultiLineFiltering
+      Stop searching endToken at the end of line
+
+    useCache (Default: false)
+      User property: useCache
+      Whether the cache should be used to save the status of the webapp across
+      multiple runs. Experimental feature so disabled by default.
+
+    useJvmChmod (Default: true)
+      User property: maven.war.useJvmChmod
+      use jvmChmod rather that cli chmod and forking process
+
+    warName (Default: ${project.build.finalName})
+      Required: true
+      User property: war.warName
+      The name of the generated WAR.
+
+    warSourceDirectory (Default: ${basedir}/src/main/webapp)
+      Required: true
+      Single directory for extra files to include in the WAR. This is where you
+      place your JSP files.
+
+    warSourceExcludes
+      The comma separated list of tokens to exclude when copying the content of
+      the warSourceDirectory.
+
+    warSourceIncludes (Default: **)
+      The comma separated list of tokens to include when copying the content of
+      the warSourceDirectory.
+
+    webappDirectory (Default:
+    ${project.build.directory}/${project.build.finalName})
+      Required: true
+      The directory where the webapp is built.
+
+    webResources
+      The list of webResources we want to transfer.
+
+    webXml
+      User property: maven.war.webxml
+      The path to the web.xml file to use.
+
+    workDirectory (Default: ${project.build.directory}/war/work)
+      Required: true
+      Directory to unpack dependent WARs into if needed.
+
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.917 s
+[INFO] Finished at: 2017-08-17T15:45:07+08:00
+[INFO] Final Memory: 12M/217M
+[INFO] ------------------------------------------------------------------------
